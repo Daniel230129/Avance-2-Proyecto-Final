@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FurEverHome</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+      #carouselExampleSlidesOnly {
+      height: 700px; /* Ajusta la altura que desees para el carrusel */
+      }
+
+      .carousel-item {
+          height: 100%;
+      }
+
+      .carousel-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover; /* Ajusta la imagen para llenar el contenedor sin distorsionarse */
+      }
+
+      .content-section.cards-container {
+          margin-top: 80px; /* Ajusta la cantidad de margen que prefieras */
+      }
+
+      .row {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 20px;
+
+      }
+      .row h2{
+          margin-bottom: 30px;
+      }
+
+      .card {
+          position: relative;
+          border: none;
+          border-radius: 8px;
+          overflow: hidden;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+          transition: transform 0.3s, box-shadow 0.3s;
+          height: 500px;
+      }
+
+      .card-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover; /* Hace que la imagen llene todo el contenedor sin distorsionarse */
+          transition: transform 0.3s ease-in-out;
+      }
+
+      .card-body {
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+          padding: 10px;
+          background: rgba(0, 0, 0, 0.253); /* Fondo semi-transparente */
+          color: #fff; /* Texto en color blanco para mejor visibilidad */
+          text-align: center;
+      }
+
+      .card-title {
+          margin: 0;
+          font-size: 1.2em;
+      }
+
+      /* Efecto hover para la carta */
+      .card:hover {
+          transform: translateY(-5px); /* Eleva la carta hacia arriba */
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Añade sombra más fuerte */
+      }
+
+
+      .about-us-container {
+          margin-top: 100px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          padding: 2rem;
+          background-color: #FFF5E4;
+        }
+        
+        .about-us-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 2rem;
+          align-items: center;
+          max-width: 1200px;
+          width: 100%;
+        }
+        
+        .about-us{
+          font-family: "Libre Caslon Text", serif;
+          font-weight: 700;
+          color: #000000;
+          margin-bottom: 20px;
+        }
+        .about-us-content p{
+          font-family: "Rubik", sans-serif;
+          color: #000000;
+          text-align: justify;
+        
+        }
+        
+        .about-us-content {
+          padding: 1rem;
+        }
+        
+        .about-us-image {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        
+        .about-us-img {
+          max-width: 100%;
+          height: auto;
+          border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="images/FUREverHome.png" alt="Logo" width="150" height="80" class="d-inline-block align-text-top">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Nosotros</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Soy Rescatista
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Publicar un rescatado</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Soy Adoptante
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Solicitud de adopción</a></li>
+
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+
+      <div>
+        <ul>
+            {% for adopcion in misAdopciones %}
+                <li>{{ adopcion.nombre }} - {{ adopcion.fecha }} - {{ adopcion.observaciones }}</li>
+            {% endfor %}
+        </ul>
+      </div>
+    
+
+
+
+      <section id="sobre-nosotros">
+        <div class="about-us-container py-5">
+          <div class="container-about-us d-flex flex-column align-items-center">
+            <div class="about-us-grid">
+              <div class="about-us-content">
+                <h2 class="about-us">Sobre Nosotros</h2>
+                <p>
+                  En FureverHome, creemos que cada animal merece un hogar lleno de amor y cuidado. Somos una plataforma dedicada a conectar a animales rescatados con personas dispuestas a ofrecerles una segunda oportunidad en la vida. Ya sea que estés buscando adoptar un perro o un gato, o que desees ayudar a un animal a encontrar su hogar ideal, estamos aquí para hacer esa conexión posible.
+                </p>
+                <p>
+                  Nuestro objetivo es brindar un espacio seguro y confiable tanto para los adoptantes como para aquellos que desean ofrecer animales en adopción, facilitando el proceso y asegurándonos de que cada mascota reciba el cariño y la atención que necesita.
+
+                </p>
+                <p>
+                  A través de FureverHome, te ofrecemos una experiencia sencilla y directa para que puedas adoptar o dar en adopción animales, asegurando que encuentres el compañero perfecto o el hogar ideal para tu mascota.
+
+                </p>
+              </div>
+              <div class="about-us-image text-center">
+                <img id="about-us-img" src="images/Refugio.jpg" alt="Refugio" class="img-fluid rounded about-us-img">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    
+</body>
+</html>
